@@ -21,6 +21,12 @@ class DashCity extends Controller
 
         return view('admin.pages.index', ['destination'=> $destination, 'origin' => $origin] );
 
+
+        // $city = City::orderby('created_at', 'asc')->paginate(10);
+
+        // $city = City::find($id);
+
+        // return view('admin.pages.index')->withCity($city); 
     }
 
     /**
@@ -44,7 +50,29 @@ class DashCity extends Controller
     public function store(Request $request)
     { 
 
-     
+        // $origin = new Origin(); 
+
+        // $origin->origin_title = $request->title;   
+        // $origin->origin_code = $request->code;   
+
+        // $origin->save();
+
+        // $request->session()->flash('success', 'Успешно добавлено!'); 
+ 
+        // return redirect()->route('admin-panel.show', $origin->id);
+        // $city = new City();
+
+        // $city->destination_title = $request->destination_title;   
+        // $city->destination_code = $request->destination_code; 
+
+        // $city->origin_title = $request->origin_title;   
+        // $city->origin_code = $request->origin_code;   
+
+        // $city->save();
+
+        // $request->session()->flash('success', 'Успешно добавлено!'); 
+ 
+        // return redirect()->route('admin-panel.show', $city->id);
     }
 
     /**
@@ -55,7 +83,22 @@ class DashCity extends Controller
      */
     public function show(City $city, $id)
     {
+        // $origin = Origin::find($id);
+        
+        // $origin = Origin::find($id);
+        // $city = City::find($id);
 
+        // $origin = DB::table('origins')->get(); 
+        // $destination = DB::table('destinations')->get(); 
+        // $origin = DB::table('origins')->get(); 
+
+
+        // return view('admin.pages.index', ['destination'=> $destination, 'origin' => $origin] );
+        
+        // $city = City::orderby('created_at', 'asc')->paginate(10);
+
+        // return view('admin.pages.show')->withOrigin($origin);
+        // return view('admin.pages.index')->withOrigin($city);
     }
 
     /**

@@ -2,31 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Home;
+use App\Dashboard;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class PageHome extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Home $home)
-    { 
+    public function index()
+    {  
 
-        $country = DB::table('countries')->get();  
-        
-        $city = DB::table('directions')
-                    ->select(DB::raw('count(directions.from_where_title) as totla, directions.id, directions.from_where_title'))
-                    ->leftJoin('cities', 'directions.from_where_title', '=', 'cities.title')
-                    ->groupBy('from_where_title')
-                    ->get();
-   
-
-        return view('home', ['city'=> $city, 'country' => $country] );
+        $city = DB::table('cities')->get();  
+        $country = DB::table('countries')->get();   
+        $directions = DB::table('directions')->get();   
  
+        return view('admin.pages.index')->with(['city' => $city, 'country' => $country, 'directions' => $directions]); 
     }
 
     /**
@@ -53,20 +47,21 @@ class PageHome extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Home  $home
+     * @param  \App\Dashboard  $dashboard
      * @return \Illuminate\Http\Response
      */
-    public function show(Home $home)
-    { 
+    public function show(Dashboard $dashboard)
+    {
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Home  $home
+     * @param  \App\Dashboard  $dashboard
      * @return \Illuminate\Http\Response
      */
-    public function edit(Home $home)
+    public function edit(Dashboard $dashboard)
     {
         //
     }
@@ -75,10 +70,10 @@ class PageHome extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Home  $home
+     * @param  \App\Dashboard  $dashboard
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Home $home)
+    public function update(Request $request, Dashboard $dashboard)
     {
         //
     }
@@ -86,10 +81,10 @@ class PageHome extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Home  $home
+     * @param  \App\Dashboard  $dashboard
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Home $home)
+    public function destroy(Dashboard $dashboard)
     {
         //
     }

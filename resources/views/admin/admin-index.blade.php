@@ -17,10 +17,13 @@
 						<a class="nav-link" href="/laravel/admin-panel">Все города</a>
 					</li> 
 					<li class="nav-item active">
-						<a class="nav-link" href="/laravel/admin-panel/destination">Куда </a>
+						<a class="nav-link" href="/laravel/admin-panel/directions/">Направления </a>
 					</li> 
 					<li class="nav-item active">
-						<a class="nav-link" href="/laravel/admin-panel/origin">От куда</a>
+						<a class="nav-link" href="/laravel/admin-panel/city/">Города</a>
+					</li> 
+					<li class="nav-item active">
+						<a class="nav-link" href="/laravel/admin-panel/country/">Страны</a>
 					</li> 
 					<li class="nav-item">
 						<a class="nav-link" href="/laravel">Вернуться на сайт</a>

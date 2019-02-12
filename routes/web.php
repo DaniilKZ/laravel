@@ -13,10 +13,15 @@
  
 Route::get('/search','SearchController@search');
 Route::get('/','SearchController@index'); 
-
-Route::resource('admin-panel/origin', 'OriginController'); 
  
-Route::resource('admin-panel/destination', 'DestinationController'); 
 
-Route::resource('/', 'PageHome');  
-Route::resource('admin-panel', 'DashCity');
+Route::resource('admin-panel/country', 'CountryController'); 
+
+Route::resource('admin-panel/city', 'CityController'); 
+
+Route::get('/changecity','CityController@changecity');
+
+Route::resource('admin-panel/directions', 'DirectionsController'); 
+
+Route::resource('/', 'PageHome');  //Главная страница сайта
+Route::resource('admin-panel', 'DashboardController');

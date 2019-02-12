@@ -1,60 +1,83 @@
 @extends('admin.admin-index')
 
-@section('title', 'Все города')
+@section('title', 'Просмотр')
 
 @section('content')
 
-@if(isset($destination))
-<p>Куда:</p>
+@if(isset($directions))
+<p><strong>Направления:</strong></p>
  <table class="table table-striped">
     <thead>
       <tr>
         <th>id</th>
-        <th>Город</th>
-        <th>Код</th>
+        <th>От куда</th> 
+        <th>Куда</th>
+        <th>Действия</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+                @foreach($directions as $directions_row)
+                 <tr>
+                        <td>{{ $directions_row->id }}</td>   
+                        <td>{{ $directions_row->from_where_title }}</td>   
+                        <td>{{ $directions_row->where_title }}</td>    
+                        <td><a href="{{ URL::to('/admin-panel/directions/' . $directions_row->id . '/edit') }}" class="btn btn-default">Редактироовать</a> </td>   
+                 </tr>
+                @endforeach 
+    
+    </tbody>
+  </table>
+@endif  
+
+@if(isset($city))
+<p><strong>Город:</strong></p>
+ <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Город</th> 
+        <th>Страна</th>
         <th>Действие</th>
       </tr>
     </thead>
     <tbody>
       
-        		@foreach($destination as $destination_row)
-        		 <tr>
-        			 	<td>{{ $destination_row->id }}</td>   
-        			 	<td>{{ $destination_row->title }}</td>   
-        			 	<td>{{ $destination_row->code }}</td>  
-        			 	<td>
-        				<a href="{{ URL::to('/admin-panel/destination/' . $destination_row->id . '/edit') }}" class="btn btn-default">Редактироовать</a>  </td>   
-        		 </tr>
-        		@endforeach 
+                @foreach($city as $city_row)
+                 <tr>
+                        <td>{{ $city_row->id }}</td>   
+                        <td>{{ $city_row->title }}</td>    
+                        <td>{{ $city_row->country }}</td>    
+                        <td><a href="{{ URL::to('/admin-panel/city/' . $city_row->id . '/edit') }}" class="btn btn-default">Редактироовать</a></td>   
+                 </tr>
+                @endforeach 
     
     </tbody>
   </table>
-@endif     
+@endif  
 
-@if(isset($origin))
-<p>От куда:</p>
+@if(isset($country))
+<p><strong>Страна:</strong></p>
  <table class="table table-striped">
     <thead>
       <tr>
         <th>id</th>
-        <th>Город</th>
-        <th>Код</th>
+        <th>Город</th> 
         <th>Действие</th>
       </tr>
     </thead>
     <tbody>
-     
-		@foreach($origin as $origin_row)
-		 <tr>
-			 	<td>{{ $origin_row->id }}</td>   
-			 	<td>{{ $origin_row->title }}</td>   
-			 	<td>{{ $origin_row->code }}</td>  
-			 	<td>
-				<a href="{{ URL::to('/admin-panel/origin/' . $origin_row->id . '/edit') }}" class="btn btn-default">Редактироовать</a>  </td>   
-		 </tr>
-		@endforeach 
+      
+                @foreach($country as $country_row)
+                 <tr>
+                        <td>{{ $country_row->id }}</td>   
+                        <td>{{ $country_row->title }}</td>    
+                        <td><a href="{{ URL::to('/admin-panel/country/' . $country_row->id . '/edit') }}" class="btn btn-default">Редактироовать</a></td>   
+                 </tr>
+                @endforeach 
+    
     </tbody>
   </table>
-@endif     
-
+@endif  
+  
 @endsection
